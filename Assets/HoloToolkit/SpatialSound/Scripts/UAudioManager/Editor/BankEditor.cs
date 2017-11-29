@@ -8,20 +8,18 @@
     [System.Serializable]
     public class BankInfo
     {
-        [System.NonSerialized]
-        public string AssetGuid;
-        [System.NonSerialized]
-        public string AssetPath;
-        [System.NonSerialized]
-        public string AssetName;
+        public string AssetPath { get { return AssetDatabase.GetAssetPath(Bank.GetInstanceID()); } }
+        public string AssetName { get { return Bank.name; } }
+
         public AudioEventBank Bank;
+
+        public BankInfo()
+        {
+        }
 
         public BankInfo(string assetGuid)
         {
-            AssetGuid = assetGuid;
-            AssetPath = AssetDatabase.GUIDToAssetPath(assetGuid);
             Bank = AssetDatabase.LoadAssetAtPath<AudioEventBank>(AssetPath);
-            AssetName = Bank.name;
         }
     }
 

@@ -19,7 +19,7 @@
 
         public BankInfo(string assetGuid)
         {
-            Bank = AssetDatabase.LoadAssetAtPath<AudioEventBank>(AssetPath);
+            Bank = AssetDatabase.LoadAssetAtPath<AudioEventBank>(AssetDatabase.GUIDToAssetPath(assetGuid));
         }
     }
 
